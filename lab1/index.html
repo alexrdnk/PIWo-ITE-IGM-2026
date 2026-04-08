@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>the fiszka</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="topbar">
+        <h1>the fiszka - Board Games Shop</h1>
+        <nav class="topbar-actions">
+            <button type="button">Zaloguj</button>
+            <button type="button">Koszyk</button>
+            <a class="btn-link" href="index2.html">Dodaj pozycje</a>
+        </nav>
+    </header>
+
+    <main class="layout">
+        <aside class="filters">
+            <h2>Filtry wyszukiwania</h2>
+            <label>
+                Nazwa lub opis
+                <input type="text" placeholder="Wpisz slowo kluczowe">
+            </label>
+            <label>
+                Cena (max)
+                <input type="number" placeholder="np. 250">
+            </label>
+            <label>
+                Rodzaj
+                <select>
+                    <option>Dowolny</option>
+                    <option>Strategiczna</option>
+                    <option>Familijna</option>
+                    <option>Ekonomiczna</option>
+                </select>
+            </label>
+            <label>
+                Ilosc graczy
+                <input type="text" placeholder="np. 2-4">
+            </label>
+            <label>
+                Wydawnictwo
+                <input type="text" placeholder="np. Rebel">
+            </label>
+            <label>
+                Czas gry
+                <select>
+                    <option>Dowolny</option>
+                    <option>do 30 min</option>
+                    <option>30-60 min</option>
+                    <option>pow. 60 min</option>
+                </select>
+            </label>
+            <button type="button" class="search-btn">Szukaj</button>
+        </aside>
+
+        <section class="results">
+            <h2>Wyniki</h2>
+            <div class="cards">
+                <article class="card">
+                    <h3>Ark Nova</h3>
+                    <p>Strategiczna gra o budowie nowoczesnego zoo.</p>
+                    <p><strong>Cena:</strong> 199 zl</p>
+                </article>
+                <article class="card">
+                    <h3>Brass: Birmingham</h3>
+                    <p>Klasyka ekonomiczna dla wymagajacych graczy.</p>
+                    <p><strong>Cena:</strong> 259 zl</p>
+                </article>
+                <article class="card">
+                    <h3>Azul</h3>
+                    <p>Szybka i piekna gra logiczna dla calej rodziny.</p>
+                    <p><strong>Cena:</strong> 129 zl</p>
+                </article>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
