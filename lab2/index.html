@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lab2 - ToDo List</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <h1>ToDo List - Lab2</h1>
+
+    <section class="panel">
+      <h2>Dodaj zadanie</h2>
+      <div class="row">
+        <input id="taskInput" type="text" placeholder="Wpisz treść zadania..." />
+        <button id="addTaskBtn">Dodaj</button>
+      </div>
+      <small class="hint">Zadanie nie może być puste.</small>
+    </section>
+
+    <section class="panel">
+      <h2>Lista zadań</h2>
+      <div id="tasksContainer"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Kosz (cofnij ostatnie usunięcie)</h2>
+      <div class="row">
+        <button id="undoBtn" disabled>Cofnij usunięcie (Ctrl+Z)</button>
+        <span id="trashInfo">Brak elementów do przywrócenia.</span>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="confirmDialog">
+    <form method="dialog">
+      <p id="confirmText"></p>
+      <div class="dialog-actions">
+        <button value="cancel" class="btn-secondary">Anuluj</button>
+        <button value="confirm" class="btn-danger">Usuń</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
