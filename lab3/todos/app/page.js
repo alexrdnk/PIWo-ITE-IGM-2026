@@ -26,7 +26,7 @@ export default async function Home({ searchParams }) {
   return (
     <main className="page">
       <section className="hero">
-        <h1>the fiszka - Board Games Shop</h1>
+        <h1>Board Games Shop</h1>
       </section>
 
       <form className="filters">
