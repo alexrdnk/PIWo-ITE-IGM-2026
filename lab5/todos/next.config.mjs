@@ -1,33 +1,24 @@
 /** @type {import('next').NextConfig} */
 
-const missingOnVercel = [];
+const firebasePublicEnv = {
+  NEXT_PUBLIC_FIREBASE_API_KEY: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  NEXT_PUBLIC_FIREBASE_PROJECT_ID: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID:
+    process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  NEXT_PUBLIC_FIREBASE_APP_ID: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+};
 
-if (!process.env.NEXT_PUBLIC_FIREBASE_API_KEY) {
-  missingOnVercel.push("NEXT_PUBLIC_FIREBASE_API_KEY");
-}
-if (!process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN) {
-  missingOnVercel.push("NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN");
-}
-if (!process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID) {
-  missingOnVercel.push("NEXT_PUBLIC_FIREBASE_PROJECT_ID");
-}
-if (!process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET) {
-  missingOnVercel.push("NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET");
-}
-if (!process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID) {
-  missingOnVercel.push("NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID");
-}
-if (!process.env.NEXT_PUBLIC_FIREBASE_APP_ID) {
-  missingOnVercel.push("NEXT_PUBLIC_FIREBASE_APP_ID");
-}
+const missingOnVercel = Object.entries(firebasePublicEnv)
+  .filter(([, value]) => !value)
+  .map(([key]) => key);
 
-if (process.env.VERCEL && missingOnVercel.length > 0) {
-  throw new Error(
-    `Vercel build: dodaj zmienne środowiskowe Firebase w ustawieniach projektu: ${missingOnVercel.join(", ")}. ` +
-      "Wzór wartości: lab5/todos/.env.local.example",
-  );
-}
 
-const nextConfig = {};
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Wymusza wstawienie NEXT_PUBLIC_* do bundla klienta na Vercel
+  env: firebasePublicEnv,
+};
 
 export default nextConfig;
