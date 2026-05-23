@@ -1,15 +1,25 @@
 /** @type {import('next').NextConfig} */
 
-const firebaseEnvKeys = [
-  "NEXT_PUBLIC_FIREBASE_API_KEY",
-  "NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN",
-  "NEXT_PUBLIC_FIREBASE_PROJECT_ID",
-  "NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET",
-  "NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID",
-  "NEXT_PUBLIC_FIREBASE_APP_ID",
-];
+const missingOnVercel = [];
 
-const missingOnVercel = firebaseEnvKeys.filter((key) => !process.env[key]);
+if (!process.env.NEXT_PUBLIC_FIREBASE_API_KEY) {
+  missingOnVercel.push("NEXT_PUBLIC_FIREBASE_API_KEY");
+}
+if (!process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN) {
+  missingOnVercel.push("NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN");
+}
+if (!process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID) {
+  missingOnVercel.push("NEXT_PUBLIC_FIREBASE_PROJECT_ID");
+}
+if (!process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET) {
+  missingOnVercel.push("NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET");
+}
+if (!process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID) {
+  missingOnVercel.push("NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID");
+}
+if (!process.env.NEXT_PUBLIC_FIREBASE_APP_ID) {
+  missingOnVercel.push("NEXT_PUBLIC_FIREBASE_APP_ID");
+}
 
 if (process.env.VERCEL && missingOnVercel.length > 0) {
   throw new Error(
